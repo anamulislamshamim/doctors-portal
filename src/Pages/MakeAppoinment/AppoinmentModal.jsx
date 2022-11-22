@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 const AppoinmentModal = ({ option, selected, appoinmentHandeler }) => {
     const { user } = useContext(AuthContext);
     const date = format(selected, 'PP');
-    const { name, slots } = option;
+    const { name, slots, price } = option;
     return (
         <>
             <input type="checkbox" id="my-modal-3" className="modal-toggle" />
@@ -15,6 +15,7 @@ const AppoinmentModal = ({ option, selected, appoinmentHandeler }) => {
                     <h3 className="text-lg font-bold">{name}</h3>
                     <form onSubmit={appoinmentHandeler} className='mt-10 grid grid-cols-1 gap-3'>
                         <input type="text" name='name' value={name} className="input input-bordered w-full" disabled />
+                        <input type="text" name='price' value={price} className="input input-bordered w-full" disabled />
                         <input type="text" name='date' value={date} placeholder='type' className="input input-bordered w-full" disabled />
                         <select name="time" placeholder='choose your time' className="select select-bordered w-full" required>
                             {

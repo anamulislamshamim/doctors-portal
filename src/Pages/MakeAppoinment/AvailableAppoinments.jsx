@@ -31,13 +31,15 @@ const AvailableAppoinments = ({ selectedDate }) => {
         const email = form.email.value;
         const phone = form.phone.value;
         const patient = form.patient.value;
+        const price = form.price.value;
         const booking = {
             treatment: name,
             appoinmentDate: date,
             slot: time,
             patient: patient,
             email: email,
-            phone: phone
+            phone: phone,
+            price: price
         };
         console.log(booking);
         fetch(`http://localhost:4000/bookings`, {
@@ -51,9 +53,9 @@ const AvailableAppoinments = ({ selectedDate }) => {
                     toast.success("Booking successfull!");
                     form.reset();
                     refetch();
+                    setOption(null);
                 }else{
                     toast.error(data.message);
-                    setOption(null);
                 };
             })
     }
